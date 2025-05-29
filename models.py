@@ -29,9 +29,6 @@ class UserWords(Base):
     user = relationship('Users', back_populates='words')
 
 
-
-
-
 class Users(Base):
 
     __tablename__ = 'users'
@@ -41,9 +38,10 @@ class Users(Base):
 
     words = relationship('UserWords', back_populates='user')
 
+    def __str__(self):
 
+        return f'user_id: {self.id}\ntelegram_id: {self.telegram_id}'
 def create_tables(engine):
-    Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
 

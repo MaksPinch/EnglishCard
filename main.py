@@ -5,6 +5,7 @@ from telebot.handler_backends import State, StatesGroup
 from telebot.storage import StateMemoryStorage
 from telebot import custom_filters
 
+from database import create_user
 
 
 class Command:
@@ -32,7 +33,9 @@ def start_the_bot(message):
     markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
 
     user_telegram_id = message.from_user.id
-    
+    create_user(user_telegram_id)
+
+
 
 
     russian_word = 'Мир'
