@@ -28,6 +28,10 @@ class UserWords(Base):
 
     user = relationship('Users', back_populates='words')
 
+    def __str__(self):
+
+        return f'user_id {self.user_id}\nid {self.id}\nrussian_word {self.russian_word}, english_word {self.english_word}'
+
 
 class Users(Base):
 
