@@ -142,13 +142,6 @@ def get_all_word_if_user_exists(telegram_id):
     finally:
         session.close()
 
-
-
-
-
-
-
-
 def save_word_to_db(user_id, russian_word, english_word):
     session = Session()
     try:
@@ -171,6 +164,30 @@ def save_word_to_db(user_id, russian_word, english_word):
         print("Ошибка при добавлении слова")
     finally:
         session.close()
+
+def delete_the_word_from_the_userwords_table(user_id, telegram_id, word_to_delete):
+    session = Session()
+    try:
+        if user_has_words(telegram_id):
+            word = session.query(UserWords).filter(UserWords.user_id == user_id, UserWords.russian_word == word_to_delete).first()
+            if word:
+                session.delete(word)
+                session.commit()
+                return True
+            else:
+                print('Слово не найдено')
+                return False
+        else:
+            print('Ошибка. У вас нет дополнительных слов')
+            return False
+    except Exception as e:
+        print(f'Ошибка при удалении слова: {e}')
+        return False
+    finally:
+        session.close()
+
+
+
 
 
 
