@@ -24,7 +24,7 @@ class MyStates(StatesGroup):
     delete_word = State()
 
 
-TOKEN = 'your_token'
+TOKEN = '7829008577:AAGmBYr4GGHclO_2mwtjdcHclXEAjEXLskI'
 
 
 state_storage = StateMemoryStorage()
