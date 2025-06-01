@@ -7,7 +7,7 @@ from random import shuffle
 
 from models import create_tables, CommonWords, UserWords, Users
 from sqlalchemy.exc import IntegrityError
-DSN = 'postgresql://postgres:130006@localhost:5432/EnglishWord'
+DSN = 'postgresql://your_data/EnglishWord'
 engine = sqlalchemy.create_engine(DSN)
 
 create_tables(engine)
